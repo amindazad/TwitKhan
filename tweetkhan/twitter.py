@@ -24,8 +24,8 @@ def add_or_update_user(username):
         if tweets:
             db_user.newest_tweet_id = tweets[0].id
         for tweet in tweets:
-            embedding = BASILICA.embed_sentence(tweet.full_text, mode='twitter')
-            db_tweet = Tweet(id=tweet.id, tweet=tweet.full_text[:500], embedding=embedding)
+            embedding = BASILICA.embed_sentence(tweet.full_text, model='twitter')
+            db_tweet = Tweet(id=tweet.id, text=tweet.full_text[:500], embedding=embedding)
             db_user.tweets.append(db_tweet)
             DB.session.add(db_tweet)
     except Exception as e:
