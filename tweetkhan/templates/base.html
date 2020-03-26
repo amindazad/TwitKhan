@@ -1,18 +1,21 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>TweetKhan🧞 - {{ title }}</title>
-        <!--CSS, Keywords, metadata goes here-->
-    </head>
-    <body>
-        <h1>TweetGini🧞</h1>
-
-        {% block content %}
-        <form action="/user" method="post">
-            <input type"text" name"user_name" placeholder="User to add">
-            <input type="submit" value="Add User">
-        </form>
-        {% endblock %}
-
-    </body>
-</html>
+{% extends "base.html" %}
+{% block content %}
+<div id="user-info">
+  <h2>{{ title }}</h2>
+  <p>{{ message }}</p>
+</div>
+<div id="user-tweets" style="max-height: 400px; overflow: auto">
+    <table class="primary" style="width: 100%">
+        <tr>
+            <th>Tweet</th>
+            <th>Link</th>
+        </tr>
+        {% for tweet in tweets %}
+        <tr>
+            <td>{{ tweet.text }}</td>
+            <td><a href="https://twitter.com/{{ title }}/status/{{ tweet.id }}">&#128279;</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}

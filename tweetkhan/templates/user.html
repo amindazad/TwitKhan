@@ -1,14 +1,29 @@
-{% extends "base.html"%}
-{% block conent %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TweetGenie🧞- {{ title }}</title>
+    <link rel="stylesheet" href="https://unpkg.com/picnic">
+  </head>
+  <body>
+    <nav>
+      <a href="/" class="brand"><span>TweetGenie🧞</span></a>
 
-<h2>User: {{ title }}</h2>
+      <!-- responsive-->
+      <input id="bmenub" type="checkbox" class="show">
+      <label for="bmenub" class="burger pseudo button">Menu</label>
 
-<p>{{ message }}</p>
+      <div class="menu">
+          <a href="https://github.com/amindazad/TwitKhan" target="_blank" class="pseudo button icon-g">
+            GitHub
+          </a>
+        <a href="/update" class="button warning">Update Tweets</a>
+        <!-- <a href="/reset" class="button error">Reset Database</a> -->
+      </div>
+    </nav>
 
-<ul>
-    {% for tweet in tweets %}
-    <li>{{ tweet.id }} - {{ tweet.text }}</li>
-    {% endfor %}
-</ul>
-
-{% endblock %}
+    <div style="width: 500px; margin: auto; margin-top: 80px;">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </body>
+</html>
