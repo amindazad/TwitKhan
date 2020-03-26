@@ -19,7 +19,8 @@ def create_app():
     
     @app.route('/user', methods=['POST'])
     @app.route('/user/<name>', methods=['GET'])
-    def user(name=None, message=''):
+    def user(name=None):
+        message = ''
         name = name or request.values['user_name']
         try:
             if request.method == 'POST':
